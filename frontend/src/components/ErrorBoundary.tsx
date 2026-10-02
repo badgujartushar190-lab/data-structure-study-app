@@ -32,22 +32,22 @@ export class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-6">
-          <div className="max-w-md w-full p-8 rounded-2xl bg-slate-900 border border-slate-800 text-center space-y-6 shadow-2xl">
-            <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center mx-auto text-rose-400">
+        <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex items-center justify-center p-6">
+          <div className="max-w-md w-full p-8 rounded-xl bg-white border border-slate-200 text-center space-y-6 shadow-sm">
+            <div className="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center mx-auto text-rose-600">
               <AlertTriangle className="w-8 h-8" />
             </div>
 
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white">Application Exception</h2>
-              <p className="text-xs text-slate-400 font-mono">
+              <h2 className="text-2xl font-bold text-slate-900">Application Exception</h2>
+              <p className="text-xs text-slate-600 font-mono">
                 {this.state.error?.message || 'An unexpected rendering error occurred.'}
               </p>
             </div>
 
             <button
               onClick={this.handleReset}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-bold text-slate-950 text-sm flex items-center justify-center gap-2 shadow-cyan-glow hover:opacity-90 transition-opacity"
+              className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold text-white text-sm flex items-center justify-center gap-2 shadow-sm transition-colors"
             >
               <RotateCcw className="w-4 h-4" />
               <span>Reload Application</span>

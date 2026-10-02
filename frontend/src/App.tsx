@@ -12,7 +12,7 @@ export const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <Router>
-        <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-950">
+        <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
           <Navbar />
           <div className="pt-24">
             <Routes>

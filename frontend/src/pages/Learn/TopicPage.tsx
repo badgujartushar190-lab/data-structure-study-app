@@ -211,20 +211,20 @@ export const TopicPage: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-6.5rem)] bg-slate-950 text-slate-100 font-sans">
+    <div className="flex min-h-[calc(100vh-6.5rem)] bg-[#F8FAFC] text-slate-900 font-sans">
       <Sidebar />
 
       <main className="ml-[260px] flex-1 p-6 md:p-8 max-w-6xl mx-auto space-y-6">
         {/* Breadcrumb Navigation */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
-            <Link to="/" className="hover:underline flex items-center gap-1">
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-2 text-xs text-slate-500">
+            <Link to="/" className="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1 font-semibold">
               <ArrowLeft className="w-3.5 h-3.5" /> Dashboard
             </Link>
-            <span>/</span>
-            <span>Chapter {isChapter1 ? '1' : isChapter2 ? '2' : isChapter3 ? '3' : isChapter4 ? '4' : isChapter5 ? '5' : isChapter6 ? '6' : isChapter7 ? '7' : isChapter8 ? '8' : chapterId || '1'}</span>
-            <span>/</span>
-            <span className="text-slate-300 font-semibold">
+            <span className="text-slate-300">/</span>
+            <span className="text-slate-600 font-medium">Chapter {isChapter1 ? '1' : isChapter2 ? '2' : isChapter3 ? '3' : isChapter4 ? '4' : isChapter5 ? '5' : isChapter6 ? '6' : isChapter7 ? '7' : isChapter8 ? '8' : chapterId || '1'}</span>
+            <span className="text-slate-300">/</span>
+            <span className="text-slate-900 font-semibold truncate max-w-md">
               {c1Topic ? c1Topic.title : c2Topic ? c2Topic.title : c3Topic ? c3Topic.title : c4Topic ? c4Topic.title : c5Topic ? c5Topic.title : c6Topic ? c6Topic.title : c7Topic ? c7Topic.title : c8Topic ? c8Topic.title : currentTopicId}
             </span>
           </div>
@@ -232,28 +232,28 @@ export const TopicPage: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyShareLink}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-300 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm transition-colors"
             >
-              <Share2 className="w-3.5 h-3.5 text-cyan-400" />
+              <Share2 className="w-3.5 h-3.5 text-blue-600" />
               <span>{copiedLink ? 'Link Copied!' : 'Share Topic'}</span>
             </button>
 
             <button
               onClick={() => markTopicCompleted(currentTopicId)}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm ${
                 isCompleted
-                  ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400'
-                  : 'bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-400'
+                  ? 'bg-emerald-50 border border-emerald-300 text-emerald-700'
+                  : 'bg-white hover:bg-slate-50 border border-slate-200 text-slate-700'
               }`}
             >
-              <CheckCircle2 className="w-4 h-4" />
+              <CheckCircle2 className={`w-4 h-4 ${isCompleted ? 'text-emerald-600' : 'text-slate-400'}`} />
               <span>{isCompleted ? 'Completed' : 'Mark Complete'}</span>
             </button>
           </div>
         </div>
 
         {/* Master 7-Segmented Tab Bar */}
-        <div className="bg-slate-900/90 border border-slate-800 p-1.5 rounded-2xl flex items-center gap-1 overflow-x-auto scrollbar-none shadow-xl">
+        <div className="bg-white border border-slate-200 p-1.5 rounded-xl flex items-center gap-1.5 overflow-x-auto scrollbar-none shadow-sm">
           {sections.map((sec) => {
             const Icon = sec.icon;
             const isActive = activeTab === sec.id;
@@ -261,13 +261,13 @@ export const TopicPage: React.FC = () => {
               <button
                 key={sec.id}
                 onClick={() => setActiveTab(sec.id)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+                className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
                   isActive
-                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-cyan-glow scale-[1.02]'
-                    : 'text-slate-400 hover:bg-slate-800/80 hover:text-slate-200'
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-cyan-400'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                 <span>{sec.label}</span>
               </button>
             );

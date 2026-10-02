@@ -42,41 +42,42 @@ export const Quiz: React.FC = () => {
   const q = sampleQuestions[currentIdx];
 
   return (
-    <div className="p-8 max-w-4xl mx-auto space-y-8">
-      <div className="flex items-center justify-between">
+    <div className="p-6 md:p-10 max-w-4xl mx-auto space-y-8">
+      <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400 mb-2">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-700 mb-2">
+            <HelpCircle className="w-3.5 h-3.5 text-emerald-600" />
             <span>Assessment Engine</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-white">DSA Concept Verification</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900">DSA Concept Verification</h1>
+          <p className="text-sm text-slate-600 mt-1">Challenge your understanding with interactive problem evaluations</p>
         </div>
 
-        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-sm font-mono text-cyan-400">
-          <Award className="w-4 h-4" />
-          <span>Score: {score}</span>
+        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-200 shadow-sm text-sm font-semibold text-slate-800">
+          <Award className="w-4 h-4 text-amber-500" />
+          <span>Score: <strong className="text-blue-600 font-bold">{score}</strong></span>
         </div>
       </div>
 
-      <div className="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-6 shadow-xl">
-        <div className="flex justify-between items-center text-xs font-mono text-slate-400">
+      <div className="p-6 md:p-8 rounded-xl bg-white border border-slate-200 space-y-6 shadow-sm">
+        <div className="flex justify-between items-center text-xs font-medium text-slate-500">
           <span>Question {currentIdx + 1} of {sampleQuestions.length}</span>
-          <span className="text-cyan-400">Multiple Choice</span>
+          <span className="text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded font-semibold">Multiple Choice</span>
         </div>
 
-        <h2 className="text-xl font-bold text-slate-100">{q.question}</h2>
+        <h2 className="text-lg md:text-xl font-bold text-slate-900 leading-snug">{q.question}</h2>
 
         <div className="space-y-3">
           {q.options.map((opt, idx) => {
             const isSelected = selectedOpt === idx;
             const isCorrect = idx === q.correctAnswer;
-            let btnStyle = 'bg-slate-800/60 border-slate-700/80 hover:bg-slate-800 text-slate-200';
+            let btnStyle = 'bg-slate-50 border-slate-200 hover:bg-blue-50/40 hover:border-blue-200 text-slate-800';
 
             if (submitted) {
-              if (isCorrect) btnStyle = 'bg-emerald-500/20 border-emerald-500 text-emerald-300';
-              else if (isSelected) btnStyle = 'bg-rose-500/20 border-rose-500 text-rose-300';
+              if (isCorrect) btnStyle = 'bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold ring-1 ring-emerald-400';
+              else if (isSelected) btnStyle = 'bg-rose-50 border-rose-500 text-rose-900 font-semibold ring-1 ring-rose-400';
             } else if (isSelected) {
-              btnStyle = 'bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-cyan-glow';
+              btnStyle = 'bg-blue-50 border-blue-500 text-blue-900 font-semibold ring-1 ring-blue-500';
             }
 
             return (
@@ -86,26 +87,26 @@ export const Quiz: React.FC = () => {
                 className={`w-full p-4 rounded-xl border text-left font-medium text-sm flex items-center justify-between transition-all ${btnStyle}`}
               >
                 <span>{opt}</span>
-                {submitted && isCorrect && <CheckCircle2 className="w-5 h-5 text-emerald-400" />}
-                {submitted && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-rose-400" />}
+                {submitted && isCorrect && <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />}
+                {submitted && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-rose-600 shrink-0" />}
               </button>
             );
           })}
         </div>
 
-        <div className="pt-4 border-t border-slate-800 flex justify-end gap-3">
+        <div className="pt-4 border-t border-slate-100 flex justify-end gap-3">
           {!submitted ? (
             <button
               onClick={handleSubmit}
               disabled={selectedOpt === null}
-              className="px-6 py-2.5 rounded-xl bg-cyan-500 font-bold text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-cyan-400 transition-colors"
+              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold text-white shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               Submit Answer
             </button>
           ) : (
             <button
               onClick={handleNext}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-bold text-slate-950 shadow-cyan-glow hover:opacity-90 transition-opacity"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold text-white shadow-sm transition-all"
             >
               <span>Next Question</span>
               <ArrowRight className="w-4 h-4" />

@@ -89,40 +89,40 @@ int main() {
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6">
       {/* Code Header */}
-      <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+      <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-between flex-wrap gap-3">
         <div className="flex items-center gap-2">
-          <Code2 className="w-5 h-5 text-emerald-400" />
-          <h2 className="font-bold text-slate-100 text-base">C99 Stack Implementation</h2>
+          <Code2 className="w-5 h-5 text-blue-600" />
+          <h2 className="font-bold text-slate-900 text-base">C99 Stack Implementation</h2>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 transition-colors shadow-sm"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-slate-400" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-400" />}
             <span>{copied ? 'Copied!' : 'Copy C Code'}</span>
           </button>
 
           <button
             onClick={handleRunInPlayground}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 font-bold text-xs text-slate-950 shadow-cyan-glow hover:opacity-90 transition-opacity"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 font-semibold text-xs text-white shadow-sm transition-all"
           >
-            <Play className="w-3.5 h-3.5 fill-slate-950" />
+            <Play className="w-3.5 h-3.5 fill-white" />
             <span>Open in Playground</span>
           </button>
         </div>
       </div>
 
-      {/* Dark Syntax Highlighted Editor Box */}
-      <div className="rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden font-mono text-xs shadow-2xl">
-        <div className="px-4 py-2.5 bg-slate-900 border-b border-slate-800/80 flex items-center justify-between text-slate-400">
-          <span>stack_implementation.c</span>
-          <span className="text-[10px] text-cyan-400">ISO/IEC 9899:1999 (C99)</span>
+      {/* High-Contrast Code Box */}
+      <div className="rounded-xl bg-[#0F172A] border border-slate-800 overflow-hidden font-mono text-xs shadow-sm">
+        <div className="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between text-slate-400">
+          <span className="font-semibold text-slate-300">stack_implementation.c</span>
+          <span className="text-[11px] text-blue-400 font-medium">ISO/IEC 9899:1999 (C99)</span>
         </div>
-        <pre className="p-6 text-slate-200 leading-relaxed overflow-x-auto selection:bg-cyan-500 selection:text-slate-950">
+        <pre className="p-6 text-slate-100 leading-relaxed overflow-x-auto bg-transparent border-0 rounded-none">
           <code>{cCodeSnippet}</code>
         </pre>
       </div>
